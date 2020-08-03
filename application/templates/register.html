@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="login-dark">
+    <form >
+        <h2 class="sr-only">Register Form</h2>
+        <div class="illustration"><i class="icon ion-ios-contact-outline"></i></div>
+        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+        <div class="form-group"><input class="form-control" type="text" name="firstname" placeholder="First Name"></div>
+        <div class="form-group"><input class="form-control" type="text" name="lastname" placeholder="Last Name"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+        <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Confirm Password"></div>
+        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Register</button></div>
+    </form>
+</div>
+
+{% endblock %} 

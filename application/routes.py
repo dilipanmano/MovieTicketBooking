@@ -1,4 +1,5 @@
 from application import app
+from flask import render_template
 
 
 @app.route("/")
@@ -8,11 +9,11 @@ def index():
 
 @app.route("/login")
 def login():
-    return "<h1>Login</h1>"
+    return render_template("login.html")
 
 @app.route("/register")
 def register():
-    return "<h1>Register</h1>"
+    return render_template("register.html")
 
 @app.route("/movies")
 def movies():
