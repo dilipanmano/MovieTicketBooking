@@ -5,7 +5,7 @@ from flask import render_template
 @app.route("/")
 @app.route("/index")
 def index():
-    return "<h1>Movie Home<h1>"
+    return render_template("index.html")
 
 @app.route("/login")
 def login():
