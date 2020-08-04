@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div>
+    <table>
+        <thead>
+            <th>Movie Title</th>
+            <th>Poster</th>
+            <th>Book Now</th>
+        </thead>
+        <tbody>
+            {% for data in moviesData %}
+            <tr>
+                <td>{{data['name']}}</td>
+                <td><img src="{{data['poster']}}"  width="180" height="180"></td>
+                <form action="{{url_for('booking')}}" method="GET">
+                    <input type="hidden" name="movieID" value="{{data['mid']}}">
+                    <input type="hidden" name="mname" value="{{data['name']}}">
+                    <input type="hidden" name="mposter" value="{{data['poster']}}">
+                    <td><button>Book</button></td>
+                 </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

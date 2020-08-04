@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div >
+    <p>Movie ID: {{data['id']}}</p>
+    <p>Movie name: {{data['name']}}</p>
+    <p>Movie poster: <img src="{{data['poster']}}"  width="180" height="180"></p>
+</div>
+
+{% endblock %}
