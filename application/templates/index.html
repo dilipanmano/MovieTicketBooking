@@ -2,17 +2,17 @@
 
 {% block content %}
 
-<div class="homebg">
+<div class="homebg" >
     <h3>Welcome To FilmyTiks</h3><br>
     <p>Book your movie tickets here!</p>
-</div>
-<div>
-    {% if login %}
-    <p>Hello User!</p>
-    {% else %}
-    <a href="{{url_for('register')}}">Register</a><br>
-    <div>Already Registered?<a href="{{url_for('login')}}"> Login</a></div>  
-    {% endif %}
+    <div>
+        {% if login %}
+        <p>Hello User!</p>
+        {% else %}
+        <a href="{{url_for('register')}}">Register</a><br>
+        <div>Already Registered?<a href="{{url_for('login')}}"> Login</a></div>  
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

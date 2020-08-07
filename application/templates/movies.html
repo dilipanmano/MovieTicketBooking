@@ -13,11 +13,13 @@
             {% for data in moviesData %}
             <tr>
                 <td>{{data['name']}}</td>
-                <td><img src="{{data['poster']}}"  width="180" height="180"></td>
-                <form action="{{url_for('booking')}}" method="GET">
+                <td><img src="{{data['poster']}}"  width="{{data['width']}}" height="{{data['height']}}"></td>
+                <form action="{{url_for('booking')}}" method="POST">
                     <input type="hidden" name="movieID" value="{{data['mid']}}">
                     <input type="hidden" name="mname" value="{{data['name']}}">
                     <input type="hidden" name="mposter" value="{{data['poster']}}">
+                    <input type="hidden" name="mwidth" value="{{data['width']}}">
+                    <input type="hidden" name="mheight" value="{{data['height']}}">
                     <td><button>Book</button></td>
                  </form>
             </tr>

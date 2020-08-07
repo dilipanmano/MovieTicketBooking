@@ -1,6 +1,9 @@
 from application import app
-from flask import render_template, Response, request
+from flask import render_template, Response, request,json
 
+moviesData=[{"mid":"1","name": "Pulp Fiction","poster": "static/images/Pulpfiction.jpg","width":"160","height":"190"},
+                {"mid":"2","name": "The Shawshank Redemption", "poster": "static/images/Shawshank.jpg","width":"190","height":"190"},
+                {"mid":"3","name": "Goodfellas", "poster": "static/images/Goodfellas.jpg","width":"160","height":"190"}]
 
 @app.route("/")
 @app.route("/index")
@@ -18,15 +21,24 @@ def register():
 
 @app.route("/movies")
 def movies():
-    moviesData=[{"mid":"1","name": "Pulp Fiction","poster": "static/images/Pulpfiction.jpg"},
-                {"mid":"2","name": "The Shawshank Redemption", "poster": "static/images/Shawshank.jpg"},
-                {"mid":"3","name": "Goodfellas", "poster": "static/images/Goodfellas.jpg"}]
+    
     return render_template("movies.html",movies=True,moviesData=moviesData)
 
-@app.route("/booking")
+@app.route("/booking",methods=["POST","GET"])
 def booking():
-    id = request.args.get('movieID')
-    name = request.args.get('mname')
-    poster = request.args.get('mposter')
-    data = {'id':id,'name':name,'poster':poster}
+    id = request.form.get('movieID')
+    name = request.form.get('mname')
+    poster = request.form.get('mposter')
+    width = int(request.form.get('mwidth')) +100 
+    height = int(request.form.get('mheight')) +100  
+    data = {'id':id,'name':name,'poster':poster,'width':width,'height':height}
     return render_template("booking.html",booking=True,data=data)
+
+@app.route("/api/")
+@app.route("/api/<idx>")
+def api(idx=None):
+    if idx==None:
+        datajson = moviesData 
+    else:
+        datajson = moviesData[int(idx)]
+    return Response(json.dumps(datajson),mimetype="application/json")
