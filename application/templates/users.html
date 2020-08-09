@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class = "common heightof">
+        {% for u in user %}
+        user name:{{ u.first_name }}<br>
+        user email:{{ u.email }}<br> <br>
+        {% endfor %}
+    </div>
+{% endblock %}

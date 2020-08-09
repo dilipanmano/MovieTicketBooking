@@ -1,9 +1,11 @@
-from application import app
+from application import app,db
 from flask import render_template, Response, request,json
+from application.models import Users, Movies, Booking
 
-moviesData=[{"mid":"1","name": "Pulp Fiction","poster": "static/images/Pulpfiction.jpg","width":"160","height":"190"},
-                {"mid":"2","name": "The Shawshank Redemption", "poster": "static/images/Shawshank.jpg","width":"190","height":"190"},
-                {"mid":"3","name": "Goodfellas", "poster": "static/images/Goodfellas.jpg","width":"160","height":"190"}]
+moviesData=[{"mid":"1","name": "Pulp Fiction","poster": "static/images/Pulpfiction.jpg","width":"160","height":"190","seats":100},
+            {"mid":"2","name": "The Shawshank Redemption", "poster": "static/images/Shawshank.jpg","width":"160","height":"190","seats":100},
+            {"mid":"3","name": "Goodfellas", "poster": "static/images/Goodfellas.jpg","width":"160","height":"190","seats":100}]
+
 
 @app.route("/")
 @app.route("/index")
@@ -33,6 +35,13 @@ def booking():
     height = int(request.form.get('mheight')) +100  
     data = {'id':id,'name':name,'poster':poster,'width':width,'height':height}
     return render_template("booking.html",booking=True,data=data)
+
+@app.route("/users")
+def users():
+    
+    user = Users.objects.all()
+    print(user)
+    return render_template("users.html",user=user)
 
 @app.route("/api/")
 @app.route("/api/<idx>")

@@ -9,3 +9,12 @@
 .moviebook{
     text-align: center;
 }
+
+.common{
+    background-image: linear-gradient(black,rgb(1, 1, 63));
+    color: white;
+}
+
+.heightof{
+    height: 300px;
+}
